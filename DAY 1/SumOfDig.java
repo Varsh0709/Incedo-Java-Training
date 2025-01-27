@@ -1,20 +1,22 @@
-package com.example;
+package com.basics;
 
 import java.util.Scanner;
 
-public class SumOfFirstN {
+public class SumOfDig {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int sum=0;
 		Scanner scan=new Scanner(System.in);
-		System.out.println("Enter the limit:");
+		System.out.println("Enter the number:");
 		int number=scan.nextInt();
-		for(int i=1;i<=number;i++) {
-			sum+=i;
+		int sum=0;
+		int temp=number;
+		while(temp!=0) {
+			int rem=temp%10;
+			sum=sum+rem;
+			temp/=10;
 		}
 		System.out.println(sum);
-
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.example;
+package com.basics;
 
 import java.util.Scanner;
 public class numberToWords {

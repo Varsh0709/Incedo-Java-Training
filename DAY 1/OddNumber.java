@@ -1,4 +1,4 @@
-package com.example;
+package com.basics;
 
 public class OddNumber{
 	//1. Display odd numbers between 1-100

@@ -1,4 +1,4 @@
-package com.example;
+package com.basics;
 
 import java.util.Scanner;
 
@@ -7,7 +7,7 @@ public class pattern {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//Floyds triangle
-		/*Scanner scan=new Scanner(System.in);
+		Scanner scan=new Scanner(System.in);
 		System.out.println("Enter the number of rows:");
 		int rows=scan.nextInt();
 		int number=1;
@@ -43,10 +43,10 @@ public class pattern {
 				System.out.print("*");
 			}
 			System.out.println();
-		}*/
+		}
 		
 		//Inverted triangle pattern
-		/*Scanner scan=new Scanner(System.in);
+		Scanner scan=new Scanner(System.in);
 		System.out.println("Enter the number of rows:");
 		int rows=scan.nextInt();
 		for(int i=rows;i>=1;i--) {
@@ -54,7 +54,7 @@ public class pattern {
 				System.out.print("*");
 			}
 			System.out.println();
-		}*/
+		}
 		
 		//Number pattern
 		Scanner scan=new Scanner(System.in);
