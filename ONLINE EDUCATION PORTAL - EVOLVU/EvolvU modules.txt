@@ -1,0 +1,128 @@
+EVOLVEU
+-------
+
+1. ADMIN PANEL
+--------------
+
+
+ADMIN LOGIN/ REGISTER/ FORGOT PASSWORD - Admin can log in, register a new account, or reset the password.
+
+
+ADMIN MENU:
+
+--> DASHBOARD - Main control panel for the admin to manage different system features.
+
+                MANAGE USERS - Admin can view, add, or modify user details.
+                               USERS SUMMARY  
+                MANAGE INSTRUCTORS - Admin can manage instructor information, including registration and updates.
+                                     INSTRUCTORS SUMMARY 
+                MANAGE COURSES - Admin can control course listings, updates, and removal.
+                MANAGE FEEDBACKS - Admin can view and manage feedback from users and instructors.
+                PAYMENT CONTROL - Admin has control over payments and financial transactions.
+                                  PAYMENT SUMMARY
+
+--> SETTINGS - Configuration area for various system preferences and customizations.
+
+               HOME PAGE SETTINGS - Admin can set up the homepage layout including courses, top-rated courses, instructors, contact details, and feedback sections.
+                                    COURSES/TOP RATED COURSES/TOP RATED INSTRUCTORS/CONTACT DETAILS/STUDENT FEEDBACKS(SUB-CLASSES) - Admin can define how courses and instructors appear, plus manage contact and feedback sections.
+        
+               EMAIL SETTINGS - Admin can configure email preferences and templates.
+
+               ROLE ACCESS SETTINGS - Admin can change the visual settings and appearance of the website interface.
+
+               GENERAL SETTINGS - Admin manages general website settings like logo, sections, and images.
+                                  LOGO/SECTIONS/IMAGES - Admin can upload or change the website’s logo, define sections, and manage images.
+
+               MENU SETTINGS - Admin customizes the menu to manage user/instructor access.
+                               USER/INSTRUCTOR - Admin can define what menu options are available to users and instructors.
+
+               PROFILE SETTINGS - Admin configures their own profile preferences.
+                                  USER/INSTRUCTOR - Admin can set their profile for user/instructor purposes.
+REPORTS
+		SUMMARY REPORT COMPLETED COURSE
+		SUMMARY REPORT PAYMENT RELATED COURSE
+
+
+SIGN OUT - Admin logs out of the system.
+
+
+2. USER PANEL
+-------------
+
+
+USER LOGIN/ REGISTER/ FORGOT PASSWORD/ CAPTCHA - Users can log in, register, or reset their password with CAPTCHA verification.
+
+USER MENU:
+
+
+--> HOME PAGE:
+
+
+           EXPLORE COURSES - Users can browse available courses.
+           SEARCH COURSES - Users can search for specific courses by keyword or category.
+           SPECIFIC COURSE REGISTRATION - Users can register for a specific course.
+           FEEDBACK - Users can provide feedback on courses they have taken.
+
+--> DASHBOARD:
+
+           ON GOING COURSES - Users can view and manage courses they are currently enrolled in.
+           COMPLETED COURSES - Users can view courses they have completed.
+           CERTIFICATION AND BADGES - Users can access and display certificates and badges earned from completed courses.
+
+           PROFILE SETTINGS - Users can update personal information and account settings.
+                              UPDATE PROFILE(NAME, MAIL ID, BANKING DETAILS AND PHONE NUMBER) - Users can edit personal information such as name, email, and phone number.
+                              VIEW PROFILE - Users can view their current profile information.
+                              RESET PASSWORD - Users can change their account password.
+                              SHARE PROFILE - Users can share their profile with others via social media or other platforms.
+
+           SIGNOUT - User logs out of the system.
+
+
+
+3. INSTRUCTOR PANEL:
+--------------------
+
+
+INSTRUCTOR LOGIN/ REGISTER/ FORGOT PASSWORD/ CAPTCHA - Instructors can log in, register, or reset their password with CAPTCHA verification.
+
+INSTRUCTOR MENU:
+
+
+--> HOME PAGE:
+
+           ADD NEW COURSES - Instructors can create and add new courses to the platform.
+           UPLOAD NOTES / ASSIGNMENTS / QUIZ - Instructors can upload course materials such as notes, assignments, and quizzes.
+           UPDATE COURSES - Instructors can modify and update the details of their courses.
+           VIEW COURSE (RATINGS, VIEWS AND FEEDBACKS) - Instructors can see statistics and feedback for their courses.
+           UPDATE COURSES(ADD, DELETE AND EDIT) - Instructors can add new content, delete outdated content, or make changes to existing courses.
+
+--> DASHBOARD:
+
+           YOUR COURSES - Instructors can view a list of their own courses.
+           REPORTS - Instructors can access performance and course engagement reports.
+
+           ACCOUNT SETTINGS - Instructors can update personal information and account settings.
+                              UPDATE PROFILE(NAME, MAIL ID, BANKING DETAILS AND PHONE NUMBER) - Instructors can edit personal information like name, email, phone number, and banking details.
+                              VIEW PROFILE(INCLUDING RATINGS) - Instructors can view their profile, including ratings and reviews from students.
+                              RESET PASSWORD - Instructors can change their password.
+                              SHARE PROFILE - Instructors can share their profile with others via social media or other platforms.
+
+           SIGNOUT - Instructor logs out of the system.
+
+
+4. GUEST USER PANEL:
+
+--> HOME PAGE:
+
+            EXPLORE 
+            SEARCH BAR
+            LOGIN / REGISTER
+            POPULAR COURSES
+            TOP RATED INSTRUCTORS
+            NEW COURSES
+            LEARNER OUTCOMES
+            ABOUT US
+            CONTACT DETAILS
+
+
+ 
