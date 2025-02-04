@@ -1,0 +1,644 @@
+
+A. GUEST USER PANEL:
+--------------------
+
+
+USE CASE 1: REGISTRATION OR LOGIN BASED ON ROLE
+************************************************
+
+
+
+--> Scenario: A guest user wants to do registration based on his/her role.
+
+    --> Pre-condition: The user has never registered before and doesn't have an existing account in any role.
+    --> Action : 1. The user visits the registration page 
+                 2. The user chooses from the below options:
+                            --> Admin/Instructor/Learner
+                 3. The user submits the choice.
+
+    --> System Behavior: The system will navigate to the respective page based on the selected role.
+
+--> Post Condition: The user entered into the respective page based on their role.
+
+B. LEARNER PANEL:
+------------------
+
+
+USE CASE 1 : NEW LEARNER REGISTRATION   
+**********************************
+
+
+--> Scenario: A user wants to do registration in learner role.
+
+    --> Pre-condition: The user has never registered before and does not have an existing account in learner role.
+    --> Action : 1. The user visits the learner registration page 
+                 2. The user will enter the below datas.
+                            a. UserId: Integer
+                            b. Name: alpha numeric
+                            c. EmailId: abc@domain.com 
+                            d. Password: alpha numeric with special characters
+                            e. Phone Number: numeric
+                            f. School/University: alphanumeric 
+                              
+                 3. The user submit the registration form.
+
+    --> System Behavior: The system will check whether the user already exist or not.
+                         if yes, it will ask the user to do login.
+                         if not, then it will add datas to the learner table and registration successful message will appear.  
+                          
+--> Post Condition: The user is now successfully registered and now user can do login using their credentials.
+
+
+USE CASE 2 : LEARNER LOGIN   
+***************************
+
+
+--> Scenario: A user wants to log in to their portal.
+
+    --> Pre-condition: The user has registered before and does have an existing account in learner role.
+    --> Action : 1. The user visits the learner login page 
+                 2. The user will enter the below datas.
+                            a. UserId: Registered userid
+                            b. Password: Registered password
+                              
+                 3. The user submit the login.
+
+    --> System Behavior: The system will check whether the user already exist or not.
+                         if yes, it will show login successfully and navigate the user to dashboard.
+                         if not, then it will ask the user to do new registration.
+                         if user entered wrong userid or password, then it will ask to re enter it. 
+                          
+--> Post Condition: The user is now successfully logged in and now user will be navigated to dashboard.
+
+
+USE CASE 3 : EXPLORE COURSES   
+****************************
+
+
+--> Scenario: A user wants to see overview of all available courses(paid and free both).
+
+    --> Pre-condition: The user should be logged in their dashboard.
+    --> Action : 1. The user visits the explore page 
+                 2. The user will enter yes to see available courses.
+
+    --> System Behavior: The system will show all available courses from courses table classified based on departments.
+                         If user selects one course, they will be navigated to the enroll in page for that selected course.
+                          
+--> Post Condition: The user now can able to access the course if they do enrollment.
+
+
+
+USE CASE 4 : SEARCH COURSES   
+****************************
+
+
+--> Scenario: A user wants to search a specific course.
+
+    --> Pre-condition: The user should be logged in their dashboard.
+    --> Action : 1. The user enter course name in search bar. 
+                          a. SearchCourse: alphanumeric
+
+    --> System Behavior: The system shows available courses that containing the user entered name.
+                         If that specific course is avilable, then learner is navigated to course enrollment page.
+                         If it's not available, System should show message as "No course found in this name".    
+                          
+--> Post Condition: The user now can able to access the course if they do enrollment.
+
+
+USE CASE 5 : SPECIFIC COURSE ENROLLMENT   
+***************************************
+
+
+--> Scenario: A user wants to do enrollment in a selected course.
+
+    --> Pre-condition: The user should do the payment, if it is paid course.
+    --> Action : 1. The user give enrollment.
+                 2. The user does payment.
+                          a. PaymentMode: enum(UPI or Card) 
+                          b. CardNumber : numeric
+                          c. CVV: numeric
+                          d. Ex.Date : mm/yyyy  
+
+    --> System Behavior: The system process the payment.
+                         If payment is successful, it will add details of course and learner in course registered table. 
+                         If payment is not done, system asks the learner to wait for a while to do enrollment.
+                          
+--> Post Condition: The user should have access for all the assignements and modules and should complete modules before the deadline.
+
+
+
+USE CASE 6 : FEEDBACK   
+**********************
+
+
+--> Scenario: A user wants to provide feedback for courses and instructors.
+
+    --> Pre-condition: The user must have completed the course before giving feedback.
+    --> Action : 1. The user open feedback form.
+                 2. The user does payment.
+                          a. CourseName: alphanumeric
+                          b. InstructorName: alphanumeric
+                          c. Rating: integer
+                          d. Feedback: alphanumeric text
+                 3. The user submit the feedback form.
+ 
+    --> System Behavior: System checks the completion status of course.
+                         If it's completed, it's navigate user to feedback page.
+                         If not, it shows message as "Feedback will be enabled once course gets completed".
+                         After successful completeion of feedback, details are stored in feedback and ratings table.
+                         System should show message as "Thanks for providing feedback and ratings".  
+                          
+--> Post Condition: The user should receive certificate after completion of feedback.
+
+
+
+
+USE CASE 7 : UPDATE AND VIEW AND SHARE PROFILE   
+**********************************************
+
+
+--> Scenario: A user wants to update or view or share profile.
+
+    --> Pre-condition: The user must have logged in with the password.
+    --> Action : 1. The user open dashboard-Update Profile(To update profile) and enter below details.
+                          a. EmailId: abc@domain.com(For example if user trying to update emailId)
+
+                 2. The user open dashboard-View Profile.
+
+                 3. The user open dashboard-Share profile.
+                          a. Platform: alphanumeric(LinkedIn or Facebook or Instagram or Whatsapp)
+ 
+    --> System Behavior: Update Profile - System checks whether the user is already registered or not.
+                                          If not, it should show message as "You are not registered or your userid or password is wrong"
+                                          If user exists, it changes the emailId column data in Learners table.
+
+                         View Profile - System checks whether the user is already registered or not.
+                                        If yes, shows details from Learners Table.
+                                        If not, it should show message as "You are not registered or your userid or password is wrong"
+
+                         Share profile -  System checks whether the user is already registered or not.
+                                          If not, it should show message as "You are not registered or your userid or password is wrong"
+                                          If yes, it should pass message via the selected platform as a link.  
+                          
+--> Post Condition: The users must save all their activities.
+
+
+
+USE CASE 8 : RESET OR FORGOT PASSWORD
+*************************************
+
+
+--> Scenario: A user wants to reset password.
+
+    --> Pre-condition: The user must have logged in with the password and user should remember UserID.
+    --> Action : 1. The user open reset or forgot password.
+                 2. Mail with OTP will be sent to user registered mailID(if user choses forgot password).         
+                 3. The user should enter below details.
+                          a. OTP : alphanumeric(only required for forgot password)
+                          b. UserID: alphanumeric
+                          c. Old Password: alpha numeric with special characters(required for reset password only)
+                          d. New Password: alpha numeric with special characters
+
+                 4. The user submit the reset form.
+ 
+    --> System Behavior: System checks whether the user is already registered or not.
+                         If yes, after verification of OTP and it updates new password in Learners Table.
+                         If not, it should show message as "You are not registered or your userid or password is wrong". 
+                          
+--> Post Condition: The user should try to login with new password and userID.
+
+
+USE CASE 9 : LOGOUT
+*******************
+
+
+--> Scenario: A user wants to logout from the account.
+
+    --> Pre-condition: The user must have logged in with the password.
+    --> Action : 1. The user open logout option and give confirmation.
+ 
+    --> System Behavior: System checks whether the user is already registered or not.
+                         If yes, it deletes user details from Learners Table.
+                         If not, it should show message as "No user account found with this UserID and password". 
+                          
+--> Post Condition: The user should create new account to continue learning process in EvolveU platform.
+
+
+
+C. INSTRUCTOR PANEL
+----------------
+
+USE CASE 1 : NEW INSTRUCTOR REGISTRATION
+****************************************
+
+--->Scenario : The user wants to register himself as an instructor.
+
+	---> Pre-Condition : The user is new to the platform and does'nt hold any previous record of a registered instructor.
+
+	---> Action : 1. The user visits the instructor registration page
+		      2. The user is asked to enter the below data to register oneself:
+				a. InstructorId - Integer
+				b. Name - Alphanumeric
+				c. EmailId - abc@domain.com
+				d. Password - Alphanumeric
+				e. PhoneNumber - Integer
+				f. Qualification - Alphanumeric
+				g. WorkExperience - Integer (in years)
+				h. Achievement - Alphanumeric
+		      3. The user successfully submits the registration form
+       
+        ---> System Behavior : The system checks whether the user has already registered or not
+				If already registered,it navigates to the login page
+				Else, the user's details will be added to the list of instructors,thereby ensuring successful registration as an instructor.
+
+---> Post-Condition : The user is now successfully registered as an instructor thereby navigating to the dashboard
+
+USE CASE 2 : INSTRUCTOR LOGIN
+*****************************
+
+--->Scenario : The user wants to login with the instructor's credentials - InstructorId and Password.
+
+	---> Pre-Condition : The user already holds the required credentials for a registered instructor
+	
+	---> Action : 1. The user visits the instructor login page
+		     2. The user is asked to enter the below data to login to the instructor page:
+				a. InstructorId - Integer
+				b. Password - Alphanumeric
+		     3. The user submits the details
+
+	---> System Behavior : The system checks whether the given InstructorId is available in the database or not.
+			       If it is available,the user will be successfully logged into the page as an instructor.
+			       If not, the system navigates the user to the instructor registration page.
+
+---> Post-Condition : The user is now logged in with the existing credentials of an instructor thereby navigating to the dashboard.
+
+USE CASE 3 : ADD NEW COURSES
+****************************
+
+--->Scenario : The user wants to create and add new courses to the platform
+	
+	---> Pre-Condition : The user must be logged in as an instructor
+			    The user has the details of the course in hand such as the course name,description,syllabus,etc.
+
+	---> Action : 1. The user goes to the dashboard and selects an option named - CREATE A NEW COURSE
+		     2. The user enters the following details
+				a. Name of the course
+				b. Description of the course
+				c. Syllabus details
+				d. Any videos/Notes docs
+				e. Sets course parameters - Free/Paid.
+				f. Start date.
+		     3. Once the user is satisfied with the information provided, click 'PUBLISH THE COURSE'.
+	
+
+	---> System Behavior : The system checks if all the fields are filled and their format is appropriate
+			       Once validated, the system stores the course details in the database system.
+			       It stores a new page on the platform for the learners to view the course
+			       It sends a notification to the user saying the course has been added to the platform successfully.
+			       The new course will be added to the available list of courses of the specific department/type for the user(learner) to view
+			       Notifies the user(learner) about the new course added
+
+---> Post-Condition : The course is now successfully added and open for the user(learner) to enroll and start the course.
+
+USE CASE 4 : UPLOAD ASSIGNMENTS/QUIZ
+************************************
+
+--->Scenario : The user wants to upload assignments/quiz to the course
+
+	---> Pre-condition : The user must be logged in as an instructor.
+			    There should be an exisiting course to upload assignments/quiz.
+			    The user should possess the assignment/quiz details to upload in the course.
+
+	---> Action : 1. The user navigates to the COURSE MANAGEMENT PAGE - SPECIFIC COURSE.
+		     2. 'CREATE ASSIGNMENT' option is clicked where the user sets the title,description,instructions,sets deadline,file format.
+		     3. 'CREATE QUIZ' option is clicked where the user creates questions(Mcqs),sets a point value for each question and time limit(From the starting time) and deadline.
+		     4. The user can set specific time limits - public access or specific release times.
+		     5. The user finally clicks the 'PUBLISH' button, thus, uploading and activating content.
+
+	---> System Behavior : The system checks if the fields are in correct format/they are filled.
+			       It uploads the assignments in assignment section,quizzes in quiz repository.
+			       It checks the specific time limits and publishes the quiz/assignments accordingly.
+			       It sends a notification to the user saying the upload was a success.
+			       It notifies the users(learners) enrolled in the course about the new assignment/quiz.
+
+---> Post-Condition : Users(Learners) can access the quiz/assignment and submit it before deadline.
+		 Users(Learners) can start the quiz and the system tracks their responses.
+		 User(Instructor) gets a confirmation saying the quiz/assignment is live.
+
+USE CASE 5 : UPDATE COURSE CONTENT (ADD,DELETE OR EDIT)
+*******************************************************
+
+--->Scenario : The user wants to add new content,delete outdated content or edit the content of the existing course
+
+		---> Pre-condition : The user must be logged in as an instructor.
+				    There should be an existing course to make changes.
+				    The user should possess details for adding new content or editing the exisiting content of the course.
+		
+		---> Action : 1. The user navigates to the COURSE MANAGEMENT PAGE - SPECIFIC COURSE.
+			     2. For adding new content, the user can navigate to the 'ADD CONTENT' option and add any documents of the format .pdf/.docx.
+			     3. For deleting outdated content, the user can navigate to the exisiting content and click 'DELETE' option which deletes the existing content.
+			     4. For editing the existing content, the user can navigate to the existing content and click 'EDIT' option which enables the user to edit deadline of a quiz/assignment,notes content,any typos,etc.
+
+		
+		---> System Behavior : The system checks whether the new content have the required format and the fields are filled.
+				       For the new content added, the system adds the new content to the course.
+				       For the content that is deleted, the system makes sure the old content is no longer a part of the course.
+				       For the edited content, the system makes sure the changes are reflected in the course.
+				       After either of the operations are done, the system sends a notification to the user saying the changes have been accomplished.
+				       It logs the action that is done for records.
+
+---> Post-Condition : The new content is added to the course.
+		 The outdated content is deleted.
+		 The existing content has been edited.
+		 Notification has been sent to the user saying the changes have been made successfully.
+		 The modified content is only visible to the users(learners).
+
+USE CASE 6 : VIEW RATINGS,VIEWS AND FEEDBACKS OF THE COURSE
+***********************************************************
+
+--->Scenario : The user wants to view the ratings,views and feedbacks of the uploaded course.
+		
+		---> Pre-Condition : The user must me logged in as an instructor.
+				    There should be an existing course to view ratings,views and feedbacks.
+				    The course must be enrolled by many students and should be running long enough to gather ratings,views and feedbacks.
+
+		---> Action : 1. The user navigates to the COURSE MANAGEMENT PAGE - SPECIFIC COURSE.
+			     2. Under the 'COURSE ANALYTICS' section, there would be options to view rating, views for the course and feedbacks.
+			     3. 'VIEW VIEWS' shows the user how many users(learners) have viewed the course.
+			     4. 'VIEW FEEDBACKS' shows the user the feedbacks provided by the users(learners) who have completed the course.
+			     5. 'VIEW RATINGS' shows the user the ratings provided by the users(learners) who have completed the course.
+			     6. The user can sort the data to gather insights based on time period (eg. past 1 month/2 months).
+
+		---> System Behavior : The system displays the number of views for the course.
+				       It segregates the ratings(% of positive and % of negative) clearly for the user.
+				       It organizes the feedback for each - content,instructor and platform.
+
+---> Post-Condition : The instructor has reviewed the course views,ratings and feedback.
+		 The instructor assesses the analytics of the course and take necessary actions in case of any improvement.
+
+
+USE CASE 7 : UPDATE AND VIEW AND SHARE PROFILE   
+**********************************************
+ 
+ 
+--> Scenario: A user wants to update or view or share profile.
+ 
+    --> Pre-condition: The user must be logged in with the password.
+
+    --> Action : 1. The user open dashboard-Update Profile(To update profile) and enter below details.
+                          a. EmailId: abc@domain.com(For example if user trying to update emailId)
+ 
+                 2. The user open dashboard-View Profile.
+ 
+                 3. The user open dashboard-Share profile.
+                          a. Platform: alphanumeric(LinkedIn or Facebook or Instagram or Whatsapp)
+
+    --> System Behavior: Update Profile - System checks whether the user is already registered or not.
+                                          If not, it should show message as "You are not registered or your userid or password is wrong"
+                                          If user exists, it changes the emailId column data in Learners table.
+ 
+                         View Profile - System checks whether the user is already registered or not.
+                                        If yes, shows details from Instructor Table.
+                                        If not, it should show message as "You are not registered or your userid or password is wrong"
+ 
+                         Share profile -  System checks whether the user is already registered or not.
+                                          If not, it should show message as "You are not registered or your userid or password is wrong"
+                                          If yes, it should pass message via the selected platform as a link.  
+
+--> Post-Condition: The users must save all their activities.
+
+USE CASE 8 : RESET OR FORGOT PASSWORD
+*************************************
+ 
+ 
+--> Scenario: The user wants to reset password.
+ 
+    --> Pre-condition: The user should remember the userId.
+
+    --> Action : 1. The user clicks forgot password.
+                 2. Mail with OTP will be sent to user registered mailID(if user choses forgot password).         
+                 3. The user should enter below details.
+                          a. OTP : alphanumeric(only required for forgot password)
+                          b. UserID: alphanumeric
+                          c. Old Password: alpha numeric with special characters(required for reset password only)
+                          d. New Password: alpha numeric with special characters
+ 
+                 4. The user submit the reset form.
+
+    --> System Behavior: System checks whether the user is already registered or not.
+                         If yes, after verification of OTP and it updates new password in Instructor Table.
+                         If not, it should show message as "You are not registered or your userid or password is wrong". 
+
+--> Post-Condition: The user should try to login with new password and userID.
+
+USE CASE 9 : SIGNOUT INSTRUCTOR ACCOUNT
+***************************************
+
+--->Scenario : The user wants to sign out the instructor account.
+
+	---> Pre-Condition : The user must be logged in with the credentials.
+			   The user must be currently on the page where signout option is visible.
+			   The user session must be currently active.
+
+	--->Action : 1. The user navigates to the top-left corner of the page where the profile is situated.
+		     2. Clicks the dropdown option where 'LOGOUT' option is available.
+		     3. Once the 'LOGOUT' button is clicked, 'YES'/'NO' option is prompted for confirming signout.
+
+	--->System Behavior : The system will terminate the current user session by logging them out.
+			      It will display a message saying 'LOGGED OUT'.
+			      it will create any cookies/data related to the user's session.
+			      It will re-direct the user to login page.
+
+---> Post-Condition : The user is no longer logged in and must re-enter the credentials to login again.
+
+D.ADMIN PANEL
+-------------
+USE CASE 1: ADMIN REGISTRATION
+*******************************
+
+Scenario: A user wants to register as an admin.
+
+Pre-condition: The user is new to the platform.The user does not have an existing admin account.
+
+Action:  1. The user visits the admin registration page.
+         2. The user provides the following details:
+		a. Admin ID (Integer)
+		b. Name (Alphanumeric)
+		c. Email ID (abc@domain.com)
+		d. Password (Alphanumeric with special characters)
+		e. Phone Number (Integer)
+	  3. The user submits the form.
+
+System Behavior:The system verifies if the user is already registered.
+                If already registered, the system navigates the user to the login page.
+                Otherwise, the system adds the admin details to the database, ensuring a successful registration.
+
+Post-Condition:The user is now registered as an admin and redirected to the admin dashboard.
+
+USE CASE 2: ADMIN LOGIN
+************************
+
+Scenario: The user wants to log in as an admin.
+
+Pre-condition:The user must have valid admin credentials.
+
+Action: 1. The user visits the admin login page.
+        2. The user provides:
+       		a. Admin ID (Integer)
+       		b. Password (Alphanumeric with special characters)
+        3. The user submits the login details.
+
+System Behavior:The system checks if the given credentials exist in the database.
+                If correct, the user is logged in.
+                If incorrect, the system displays an error message and offers the option to reset the password.
+
+Post-Condition:The user is successfully logged in and navigated to the admin dashboard.
+
+USE CASE 3: MANAGE USERS (INSTRUCTORS & LEARNERS)
+**************************************************
+
+Scenario: The admin wants to manage users.
+
+Pre-condition:The admin must be logged in.
+              There should be registered instructors and learners.
+
+Action: 1. The admin navigates to the "User Management" section.
+           The admin can:
+       		a. View users (instructors & learners).
+       		b. Approve/reject instructor registrations.
+       		c. Block/unblock users.
+       		d. Delete a user account.
+
+System Behavior:The system displays a list of users.
+                Based on the admin’s action:
+                If an account is approved, the user is notified.
+                If blocked, the user cannot access their account.
+                If deleted, all associated data is removed.
+
+Post-Condition:The admin has successfully managed user accounts.
+
+USE CASE 4: ADD, UPDATE, OR DELETE COURSES
+*******************************************
+
+Scenario: The admin wants to manage courses.
+
+Pre-condition:The admin must be logged in.
+
+Action: 1. The admin navigates to the "Course Management" section.
+           The admin can:
+       		a. Add a new course (Course Name, Description, Instructor, Price, Start Date).
+       		b. Update existing courses (Edit details, change instructors).
+       		c. Delete courses (Remove from the platform).
+
+System Behavior:The system verifies inputs before saving changes.
+                Updates are reflected immediately on the platform.
+                If a course is deleted, it is removed from the list and learners are notified.
+
+Post-Condition:The course list is updated as per admin actions.
+
+USE CASE 5: MANAGE PAYMENTS & SUBSCRIPTIONS
+********************************************
+
+Scenario: The admin wants to monitor transactions and subscriptions.
+
+Pre-condition:The admin must be logged in.
+              There should be active payments/subscriptions.
+
+Action: 1. The admin navigates to the "Payments & Subscriptions" section.
+           The admin can:
+      		a. View payment history.
+       		b. Approve or reject refund requests.
+       		c. Update subscription plans.
+       		d. Monitor revenue reports.
+
+System Behavior:The system fetches and displays all transactions.
+                Any updates or approvals are reflected immediately.
+
+Post-Condition:The admin has successfully managed payments and subscriptions.
+
+USE CASE 6: MANAGE FEEDBACK & REPORTS
+**************************************
+
+Scenario: The admin wants to review course feedback and reports.
+
+Pre-condition:The admin must be logged in.
+              There should be user feedback or reports available.
+
+Action: 1. The admin navigates to "Feedback & Reports" section.
+           The admin can:
+       		a. View learner and instructor feedback.
+       		b. Filter by ratings, course name, or date.
+       		c. Take action against reported content.
+       		d. Generate reports for analytics.
+
+System Behavior:The system compiles and presents data.
+                If action is taken against a report, the responsible party is notified.
+
+Post-Condition:The admin has assessed feedback and handled reports appropriately.
+
+USE CASE 7: SEND NOTIFICATIONS TO USERS
+****************************************
+
+Scenario: The admin wants to send notifications to users.
+
+Pre-condition:The admin must be logged in.
+
+Action: 1. The admin navigates to "Notifications" section.
+           The admin can:
+       		a. Send announcements to all users.
+       		b. Notify specific groups (instructors, learners).
+       		c. Send reminders (course deadlines, payments).
+
+System Behavior:The system delivers messages to targeted users.
+                The notification appears on user dashboards and is sent via email (if configured).
+
+Post-Condition:Users receive and view notifications.
+
+USE CASE 8: RESET OR FORGOT PASSWORD
+*************************************
+
+Scenario: The admin wants to reset their password.
+
+Pre-condition:The admin must remember their Admin ID.
+
+Action: 1. The admin clicks "Forgot Password."
+        2. An OTP is sent to the registered email.
+           The admin enters:
+       		a. OTP (Alphanumeric)
+       		b. Admin ID (Alphanumeric)
+       		c. Old Password (If resetting)
+       		d. New Password (Alphanumeric with special characters)
+        3. The admin submits the form.
+
+System Behavior:The system verifies the OTP and updates the password.
+                If incorrect, an error message appears.
+
+Post-Condition:The admin can log in using the new password.
+
+USE CASE 9: SIGN OUT ADMIN ACCOUNT
+***********************************
+
+Scenario: The admin wants to log out.
+
+Pre-condition:The admin must be logged in.
+  	      The session must be active.
+
+Action: 1. The admin navigates to the top-right corner and selects "Logout."
+        2. A confirmation prompt appears.
+        3. The admin confirms "Yes."
+
+System Behavior:The system terminates the session.
+                The user is redirected to the login page.
+
+Post-Condition:The admin is successfully logged out.
+
+				
+
+ 
+
+
+			       
+
+			    
+		
+		
