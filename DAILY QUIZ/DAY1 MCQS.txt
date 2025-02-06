@@ -1,0 +1,26 @@
+1.	c)abcq
+2.	a) abc’
+3.	b)5
+4.	d)false
+5.	d)false true
+6.	c)3
+7.	b)2
+8.	c)false
+9.	public,static,final
+10.	c)7
+11.	d)Compilation error
+12.	d)The variable is set to elements[0]
+13.	b)2
+14.	a)any class
+15.	c) A NullPointerException occurs at runtime
+16.	d)llo i l
+17.	a) 6 4 6 9
+18.	a) a is a lower case Letter is White space character
+19.	b)e
+20.	c) 16.46666666666667
+21.	d)all of the mentioned
+22.	c)32
+23.	c) 301.56
+24.	a) 0.009999999999999998 
+	   0.01
+25.	b) Add: 473.66 Add using MathContext: 4.7E+2
